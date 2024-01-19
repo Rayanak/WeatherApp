@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>☔️ Weather App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css"/>
+</head>
+
+<body>
+<section class="hero is-primary">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                Погодное приложение
+            </h1>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-offset-4 is-4">
+                <a href="">Общая страница</a>
+                <a href="/about">О проекте</a>
+                <a href="/weather/1">Погода в городе с ID 1</a>
+                <a href="/weather/bryansk">Погода в Брянске</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% include 'footer.html' %}
+</body>
+
+</html>
