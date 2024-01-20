@@ -32,22 +32,24 @@ def index(request):
     for city in cities:
         try:
 
-            r = requests.get(url.format(city)).json()
+            r = requests.get(url.format(city))
+            js = r.json()
 
             ya_city_weather = get_yandex_weather(city.name)
             city_weather = {
                 'id': city.id,
                 'city': city.name,
-                'temperature': r['main']['temp'],
-                'description': r['weather'][0]['description'],
-                'icon': r['weather'][0]['icon'],
+                'temperature': js['main']['temp'],
+                'description': js['weather'][0]['description'],
+                'icon': js['weather'][0]['icon'],
                 'desc_ya': ya_city_weather.get('description', '-'),
                 'temp_ya': ya_city_weather.get('temperature', '0')
             }
 
             weather_data.append(city_weather)
+
         except Exception as e:
-            print(e)
+            print("Error: ", e)
 
 
 
