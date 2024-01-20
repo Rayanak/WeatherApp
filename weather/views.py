@@ -35,8 +35,8 @@ def index(request):
             'temperature': r['main']['temp'],
             'description': r['weather'][0]['description'],
             'icon': r['weather'][0]['icon'],
-            'desc_ya': ya_city_weather.get('description', 'Недоступно'),
-            'temp_ya': ya_city_weather.get('temperature', 'Недоступно')
+            'desc_ya': ya_city_weather.get('description', '-'),
+            'temp_ya': ya_city_weather.get('temperature', '0')
         }
 
 
