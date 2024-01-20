@@ -8,7 +8,11 @@ def getCityLatLong(city_name):
     url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=c56398aa9dd4ea5e0854302e39acf5a5'
     r = requests.get(url.format(city_name)).json()
 
-    return {'lat': r["coord"]['lat'], 'lon': r["coord"]['lon']}
+    if 'coord' in r:
+        return {'lat': r['coord']['lat'], 'lon': r['coord']['lon']}
+    else:
+        # Возвращаем значение по умолчанию или обрабатываем ошибку
+        return {'lat': 0, 'lon': 0}  # или возврат ошибки
 
 
 def index(request):
