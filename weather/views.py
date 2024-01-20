@@ -5,7 +5,7 @@ from .forms import CityForm
 
 
 def getCityLatLong(city_name):
-    url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=c56398aa9dd4ea5e0854302e39acf5a5'
+    url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=686db5a3563a8649ef594d128acc9ac1'
     r = requests.get(url.format(city_name)).json()
 
     if 'coord' in r:
@@ -16,7 +16,7 @@ def getCityLatLong(city_name):
 
 
 def index(request):
-    url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=c56398aa9dd4ea5e0854302e39acf5a5'
+    url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=686db5a3563a8649ef594d128acc9ac1'
     city = 'London'
 
     if request.method == 'POST':
@@ -87,7 +87,7 @@ def get_yandex_weather(city_name):
 
 def weather_by_id(request, id):
     city = City.objects.get(id=id)
-    url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=c56398aa9dd4ea5e0854302e39acf5a5'
+    url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=686db5a3563a8649ef594d128acc9ac1'
     r = requests.get(url.format(city.name)).json()
 
     city_weather = {
@@ -102,7 +102,7 @@ def weather_by_id(request, id):
 
 
 def weather_by_city(request, city_name):
-    url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=c56398aa9dd4ea5e0854302e39acf5a5'
+    url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=686db5a3563a8649ef594d128acc9ac1'
     r = requests.get(url.format(city_name)).json()
 
     city_weather = {
