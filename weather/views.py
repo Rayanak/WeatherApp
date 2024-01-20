@@ -30,21 +30,26 @@ def index(request):
     weather_data = []
 
     for city in cities:
-        r = requests.get(url.format(city)).json()
+        try:
 
-        ya_city_weather = get_yandex_weather(city.name)
-        city_weather = {
-            'id': city.id,
-            'city': city.name,
-            'temperature': r['main']['temp'],
-            'description': r['weather'][0]['description'],
-            'icon': r['weather'][0]['icon'],
-            'desc_ya': ya_city_weather.get('description', '-'),
-            'temp_ya': ya_city_weather.get('temperature', '0')
-        }
+            r = requests.get(url.format(city)).json()
+
+            ya_city_weather = get_yandex_weather(city.name)
+            city_weather = {
+                'id': city.id,
+                'city': city.name,
+                'temperature': r['main']['temp'],
+                'description': r['weather'][0]['description'],
+                'icon': r['weather'][0]['icon'],
+                'desc_ya': ya_city_weather.get('description', '-'),
+                'temp_ya': ya_city_weather.get('temperature', '0')
+            }
+
+            weather_data.append(city_weather)
+        except Exception as e:
+            print(e)
 
 
-        weather_data.append(city_weather)
 
     context = {'weather_data': weather_data, 'form': form}
     return render(request, 'weather/weather.html', context)
